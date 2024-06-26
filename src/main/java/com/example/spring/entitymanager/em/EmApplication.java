@@ -31,12 +31,7 @@ public class EmApplication {
 	@Bean
 	ApplicationRunner runner(ProductService productService, CustomerService customerService, CustomPlatformTransactionManager transactionManager){
 		return args -> {
-			productService.delete();
-			customerService.delete();
-			CustomTransactionStatus transaction = (CustomTransactionStatus) transactionManager.getTransaction(new DefaultTransactionDefinition());
-			productService.insert();
-			customerService.insert();
-			transactionManager.commit(transaction);
+
 		};
 	}
 
